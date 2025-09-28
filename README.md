@@ -1,4 +1,4 @@
-```
+##
  Human Action Recognition System
 
  Project Overview
@@ -6,10 +6,10 @@ This project implements a **Human Action Recognition System** using the **Multi-
 
 The system processes 3D joint coordinates from two-person skeleton sequences and predicts actions in real time during inference with visual feedback.
 
----
+##
 
 📂 Directory Structure
-```
+##
 ActionRecognition/
 ├── models/                   # Saved model weights and normalization stats
 │   ├── ms_tcn_pku.pth        # Trained MS-TCN model checkpoint
@@ -21,9 +21,8 @@ ActionRecognition/
 ├── train_ms_tcn.py           # Training script for MS-TCN model
 ├── inference.py              # Real-time inference with visualization
 ├── README.md                 # Project documentation
-```
+##
 
----
 
 ## Dependencies
 Install required packages:
