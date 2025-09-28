@@ -1,7 +1,6 @@
-##
- Human Action Recognition System
+# Human Action Recognition System
 
- Project Overview
+ ## Project Overview
 This project implements a **Human Action Recognition System** using the **Multi-Stage Temporal Convolutional Network (MS-TCN)** on the **PKU-MMDv2 dataset**. The model performs **frame-level action classification** on skeleton data, recognizing **51 distinct human actions** plus a **background class** (total 52 classes).
 
 The system processes 3D joint coordinates from two-person skeleton sequences and predicts actions in real time during inference with visual feedback.
