@@ -1,87 +1,86 @@
-# Human-Action-Recognition-For-CARET-Project
+```markdown
+# Human Action Recognition System
 
-\section{Evaluation Metrics}
-The performance of the proposed framework will be assessed using quantitative measures that jointly evaluate recognition accuracy, task execution, responsiveness, and adaptability. Each metric is formally defined below.
+## Project Overview
+This project implements a **Human Action Recognition System** using the **Multi-Stage Temporal Convolutional Network (MS-TCN)** on the **PKU-MMDv2 dataset**. The model performs **frame-level action classification** on skeleton data, recognizing **51 distinct human actions** plus a **background class** (total 52 classes).
 
-\paragraph{Task Success Rate (TSR).} 
-The TSR quantifies the effectiveness of the system in completing assigned tasks according to specification:
-\[
-TSR = \frac{n_s}{n_t} \times 100\%,
-\]
-where $n_t$ is the number of assigned tasks and $n_s$ the number of successfully executed tasks.  
-A higher $TSR$ indicates reliable end-to-end operation of the perception--reasoning--execution pipeline.
+The system processes 3D joint coordinates from two-person skeleton sequences and predicts actions in real time during inference with visual feedback.
 
-\paragraph{Failure Rate (FR).} 
-The FR measures the proportion of failed attempts:
-\[
-FR = \frac{n_f}{n_t} \times 100\%,
-\]
-where $n_f$ is the number of failed task executions.  
-It complements $TSR$ and reflects the safety and robustness of the system during deployment.
+---
 
-\paragraph{Classification Accuracy (CA).} 
-At the perception level, CA evaluates the recognition capability of the model:
-\[
-CA = \frac{n_c}{n_{\text{total}}} \times 100\%,
-\]
-where $n_c$ is the number of correctly classified samples and $n_{\text{total}}$ the total test samples.  
-This metric reflects the system’s ability to identify human actions and objects under diverse conditions.
+## 📂 Directory Structure
+```
+ActionRecognition/
+├── models/                   # Saved model weights and normalization stats
+│   ├── ms_tcn_pku.pth        # Trained MS-TCN model checkpoint
+│   ├── joint_mean.npy        # Skeleton normalization mean
+│   ├── joint_std.npy         # Skeleton normalization std
+│
+├── logs/                     # Training logs and confusion matrices
+│
+├── train_ms_tcn.py           # Training script for MS-TCN model
+├── inference.py              # Real-time inference with visualization
+├── README.md                 # Project documentation
+```
 
-\paragraph{Retrieval Precision (RP).} 
-To measure the effectiveness of the semantic knowledge base, we adopt RP:
-\[
-RP = \frac{TP}{TP + FP},
-\]
-where $TP$ and $FP$ denote the numbers of true and false positive retrievals.  
-A high $RP$ demonstrates the capability of the semantic graph to return contextually relevant relations and actions.
+---
 
-\paragraph{Latency ($L$).} 
-Real-time operation is characterized by the average end-to-end latency:
-\[
-L = \frac{1}{T} \sum_{i=1}^{T} \bigl(t_{\text{act}, i} - t_{\text{perc}, i}\bigr),
-\]
-where $t_{\text{perc}, i}$ is the perception timestamp and $t_{\text{act}, i}$ the corresponding action initiation time.  
-A target of $L < 300\;\text{ms}$ ensures timely responses for safe human--robot interaction.
+## Dependencies
+Install required packages:
+```bash
+pip install torch opencv-python pandas numpy scikit-learn matplotlib seaborn
+```
 
-\paragraph{Adaptability ($A$).} 
-To assess the system’s improvement across successive interactions, adaptability is defined as
-\[
-A = \frac{TSR_S - TSR_1}{S-1},
-\]
-where $TSR_s$ is the task success rate in session $s$.  
-A positive $A$ indicates continuous learning and adaptation of the system to user-specific behaviors.
+Ensure you have **PyTorch** and **OpenCV** installed with CUDA support (optional but recommended).
 
-\vspace{0.3cm}
-Together, these metrics provide a rigorous multi-dimensional evaluation protocol that goes beyond recognition accuracy to capture robustness, semantic reasoning quality, responsiveness, and long-term adaptability in dynamic human-centered environments.
+---
 
-Dataset Setup
-Download PKU-MMDv2 dataset
-Dataset Setup
-Download PKU-MMDv2 dataset
-Update DATA_ROOT in both scripts with your dataset path
-
-Training
-bash
-
-Line Wrapping
-
-Collapse
+## Training the Model
+To train the model, run:
+```bash
 python train_ms_tcn.py
-Saves best model to models/ms_tcn_pku.pth
-Generates confusion matrices in logs/
+```
+This will:
+- Load skeleton data and labels from PKU-MMDv2
+- Normalize joint coordinates per joint
+- Train the MS-TCN model using cross-subject split
+- Save the best model based on F1-score
+- Generate confusion matrices every 5 epochs
 
-Inference
-bash
+> ⚠️ Update `DATA_ROOT` in `train_ms_tcn.py` to point to your PKU-MMDv2 directory.
 
-Line Wrapping
+---
 
-Collapse
+## Inference & Visualization
+Run inference on any video from the dataset:
+```bash
 python inference.py
-Enter video ID when prompted (e.g., "0002-M")
-Shows video with skeleton overlay and action recognition
-Screenshots
-Inference output showing:
-python inference.py
-Original video with skeleton overlay
-Action ID visualization panel
-Real-time action recognition results
+```
+- Select a video ID (e.g., `0002-M`)
+- View real-time skeleton overlay with joint connections
+- See predicted action ID, name, and confidence
+- Color-coded action panel with blinking highlight for current action
+- Press `q` or `ESC` to exit
+
+The system uses temporal smoothing and confidence thresholds to ensure stable predictions.
+
+---
+
+## Dataset
+This project uses the **PKU-MMDv2 dataset** (skeleton modality):
+- **Input**: 150D skeleton vectors (2 persons × 25 joints × 3 coordinates)
+- **Labels**: Frame-wise action annotations (51 actions + background)
+- **Splits**: Supports cross-subject and cross-view evaluation
+
+> 📌 You must obtain the PKU-MMDv2 dataset separately and place it in the expected directory structure.
+
+---
+
+## Contributing
+Feel free to open issues or submit pull requests for improvements.
+
+---
+
+## License
+MIT License © 2025
+```
