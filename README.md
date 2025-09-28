@@ -1,14 +1,14 @@
-```markdown
-# Human Action Recognition System
+```
+ Human Action Recognition System
 
-## Project Overview
+ Project Overview
 This project implements a **Human Action Recognition System** using the **Multi-Stage Temporal Convolutional Network (MS-TCN)** on the **PKU-MMDv2 dataset**. The model performs **frame-level action classification** on skeleton data, recognizing **51 distinct human actions** plus a **background class** (total 52 classes).
 
 The system processes 3D joint coordinates from two-person skeleton sequences and predicts actions in real time during inference with visual feedback.
 
 ---
 
-## 📂 Directory Structure
+📂 Directory Structure
 ```
 ActionRecognition/
 ├── models/                   # Saved model weights and normalization stats
@@ -47,7 +47,7 @@ This will:
 - Save the best model based on F1-score
 - Generate confusion matrices every 5 epochs
 
-> ⚠️ Update `DATA_ROOT` in `train_ms_tcn.py` to point to your PKU-MMDv2 directory.
+>  Update `DATA_ROOT` in `train_ms_tcn.py` to point to your PKU-MMDv2 directory.
 
 ---
 
@@ -72,7 +72,7 @@ This project uses the **PKU-MMDv2 dataset** (skeleton modality):
 - **Labels**: Frame-wise action annotations (51 actions + background)
 - **Splits**: Supports cross-subject and cross-view evaluation
 
-> 📌 You must obtain the PKU-MMDv2 dataset separately and place it in the expected directory structure.
+>  You must obtain the PKU-MMDv2 dataset separately and place it in the expected directory structure.
 
 ---
 
