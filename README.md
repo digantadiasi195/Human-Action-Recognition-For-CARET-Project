@@ -9,6 +9,7 @@ The system processes 3D joint coordinates from two-person skeleton sequences and
 ##
 
 📂 Directory Structure
+```
 ##
 ActionRecognition/
 ├── models/                   # Saved model weights and normalization stats
@@ -22,7 +23,7 @@ ActionRecognition/
 ├── inference.py              # Real-time inference with visualization
 ├── README.md                 # Project documentation
 ##
-
+```
 
 ## Dependencies
 Install required packages:
