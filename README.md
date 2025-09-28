@@ -8,7 +8,7 @@ The system processes 3D joint coordinates from two-person skeleton sequences and
 
 ##
 
-📂 Directory Structure
+Directory Structure
 ```
 ##
 ActionRecognition/
@@ -68,10 +68,8 @@ The system uses temporal smoothing and confidence thresholds to ensure stable pr
 ---
 ## Visualization
 
-<div align="center">
-  <img src="HAND.png" width="32%" />
-  <img src="Hugging1.png" width="32%" />
-</div>
+  <img src="HAND.png"" />
+  <img src="Hugging1.png"" />
 
 ## Dataset
 This project uses the **PKU-MMDv2 dataset** (skeleton modality):
