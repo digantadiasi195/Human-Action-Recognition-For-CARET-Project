@@ -52,6 +52,7 @@ This will:
 ---
 
 ## Inference & Visualization
+
 Run inference on any video from the dataset:
 ```bash
 python inference.py
@@ -65,6 +66,12 @@ python inference.py
 The system uses temporal smoothing and confidence thresholds to ensure stable predictions.
 
 ---
+## Visualization
+
+<div align="center">
+  <img src="HAND.png" width="32%" />
+  <img src="Hugging1.png" width="32%" />
+</div>
 
 ## Dataset
 This project uses the **PKU-MMDv2 dataset** (skeleton modality):
