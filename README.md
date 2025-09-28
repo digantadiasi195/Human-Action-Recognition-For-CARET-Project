@@ -67,10 +67,8 @@ The system uses temporal smoothing and confidence thresholds to ensure stable pr
 
 ---
 ## Visualization
-
-  <img src="HAND.png"" />
-  <img src="Hugging1.png"" />
-
+![Handsheking](HAND.png)
+![Hugging](Hugging1.png)
 ## Dataset
 This project uses the **PKU-MMDv2 dataset** (skeleton modality):
 - **Input**: 150D skeleton vectors (2 persons × 25 joints × 3 coordinates)
